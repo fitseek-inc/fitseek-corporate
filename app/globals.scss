@@ -1,0 +1,338 @@
+/* app/globals.scss */
+
+// Variables
+$primary-color: #2cd28c;
+$primary-hover: #25b075;
+$text-main: #333333;
+$text-sub: #666666;
+$bg-body: #ffffff;
+$bg-section: #f8f9fa;
+$border-color: #e5e7eb;
+$max-width: 1140px;
+
+// Mixins
+@mixin container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@mixin card-base {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-color: $primary-color;
+  }
+}
+
+// Base
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $text-main;
+  background-color: $bg-body;
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p { margin: 0; }
+
+// Utilities
+.container { @include container; }
+.section { padding: 100px 0; }
+.bg-gray { background-color: $bg-section; }
+.fw-bold { font-weight: 700; }
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+
+  &-primary {
+    background-color: $primary-color;
+    color: #fff;
+
+    &:hover {
+      background-color: $primary-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba($primary-color, 0.3);
+    }
+  }
+}
+
+// Header & Footer (簡易記述)
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid $border-color;
+  padding: 0 40px;
+
+  .header-inner {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: 800;
+    span { color: $primary-color; }
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    .nav-link {
+      font-size: 14px;
+      font-weight: 700;
+      &:hover { color: $primary-color; }
+    }
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    .nav-menu { display: none; }
+  }
+}
+
+// Hero Section
+.hero {
+  padding: 120px 0 140px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -150px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba($primary-color, 0.08) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.4;
+      
+      .highlight-marker {
+        background: linear-gradient(transparent 70%, rgba($primary-color, 0.2) 70%);
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: $text-sub;
+      margin-bottom: 48px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h1 { font-size: 32px; }
+  }
+}
+
+// Common Sections
+.section-header {
+  margin-bottom: 60px;
+  text-align: center;
+  .section-title { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+  .section-desc { color: $text-sub; }
+}
+
+// Problems Grid
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.problem-card {
+  @include card-base;
+  padding: 40px 32px;
+
+  .problem-icon {
+    font-size: 40px;
+    color: $primary-color;
+    margin-bottom: 24px;
+    display: block;
+  }
+  h3 { font-size: 20px; margin-bottom: 16px; font-weight: 700; }
+  ul {
+    padding-left: 20px;
+    color: $text-sub;
+    font-size: 15px;
+    li { margin-bottom: 8px; list-style: disc; }
+  }
+}
+
+// Stats
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+
+  .stat-item {
+    text-align: center;
+    .stat-number {
+      display: block;
+      font-size: 64px;
+      font-weight: 700;
+      color: $primary-color;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: 'Arial', sans-serif;
+    }
+    .stat-unit { font-size: 24px; color: $text-main; margin-left: 4px; }
+    .stat-label { font-size: 14px; color: $text-sub; font-weight: 700; letter-spacing: 0.1em; }
+  }
+}
+
+// Cases Grid
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.case-card {
+  @include card-base;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .case-img {
+    width: 100%;
+    height: 180px;
+    background-color: #eef2f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bdc3c7;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .case-content {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .case-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .case-tags {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      .tag {
+        font-size: 11px;
+        background: rgba($primary-color, 0.1);
+        color: darken($primary-color, 20%);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .case-footer {
+      margin-top: auto;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: $text-sub;
+      .case-val { font-weight: 700; color: $text-main; }
+    }
+  }
+}
+
+// Tech Stack
+.tech-logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  opacity: 0.6;
+  .tech-item {
+    font-size: 20px;
+    font-weight: 700;
+    color: #555;
+    padding: 10px 20px;
+    border: 2px solid #eee;
+    border-radius: 4px;
+  }
+}
+
+// Footer
+footer {
+  background: #111;
+  color: #fff;
+  padding: 80px 0 40px;
+  
+  .footer-cta {
+    text-align: center;
+    margin-bottom: 60px;
+    h2 { font-size: 32px; margin-bottom: 24px; }
+    p { color: #999; margin-bottom: 32px; }
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    border-top: 1px solid #333;
+    padding-top: 40px;
+    a:hover { color: $primary-color; }
+  }
+  
+  .copyright { text-align: center; color: #555; font-size: 12px; }
+}
