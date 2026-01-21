@@ -104,6 +104,9 @@ header {
     font-size: 24px;
     font-weight: 800;
     span { color: $primary-color; }
+    img {
+      margin-top: 16px;
+    }
   }
 
   .nav-menu {
@@ -123,46 +126,68 @@ header {
   }
 }
 
-// Hero Section
+// app/globals.scss
+
+// Hero Section (Warm & Intelligent Theme)
 .hero {
-  padding: 120px 0 140px;
+  padding: 160px 0 180px; 
   position: relative;
   overflow: hidden;
+  color: #fff;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -150px; right: -100px;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba($primary-color, 0.08) 0%, rgba(255,255,255,0) 70%);
-    z-index: 0;
-  }
+  // ▼ 変更点1：背景色を「セピア調の温かいダークグレー」に変更
+  // 真っ黒や紺色ではなく、コーヒーや木材のような深いブラウンをベースにすることで
+  // 「温かみ」と「落ち着き」を出しています。
+  background-image: 
+    linear-gradient(135deg, rgba(38, 32, 30, 0.95) 0%, rgba(50, 40, 35, 0.7) 100%),
+    url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
 
   &-content {
     position: relative;
     z-index: 1;
-    max-width: 650px;
+    max-width: 700px;
 
     h1 {
-      font-size: 48px;
+      font-size: 54px;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       line-height: 1.4;
-      
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3); // 文字の影
+
+      // ▼ 変更点2：ラインデザインの復活
+      // ダーク背景でも目立つように、透明度を少し上げて（0.2→0.6）調整しています。
       .highlight-marker {
-        background: linear-gradient(transparent 70%, rgba($primary-color, 0.2) 70%);
+        // 背景グラデーションを使って「下線マーカー」を表現
+        // transparent(透明) 60% : 緑色 40% の比率
+        background: linear-gradient(transparent 60%, rgba($primary-color, 0.6) 60%);
+        
+        // 文字色自体は白のまま、マーカーを後ろに敷く
+        color: #f1f1f1; 
+        display: inline; // インライン要素にして改行してもマーカーが続くように
+        padding-bottom: 4px; // 少し余白を持たせる
+        filter: none; // 前回の発光エフェクトは削除
       }
     }
 
     p {
       font-size: 18px;
-      color: $text-sub;
+      // 温かみのある背景に合わせて、少し暖色寄りのグレーに変更
+      color: #e6e0dc; 
       margin-bottom: 48px;
+      line-height: 2.0;
+      font-weight: 500;
     }
   }
-  
+
+  // スマホ対応
   @media (max-width: 768px) {
-    h1 { font-size: 32px; }
+    padding: 100px 0 120px;
+    &-content {
+      h1 { font-size: 32px; }
+      p { font-size: 15px; }
+    }
   }
 }
 
@@ -190,10 +215,11 @@ header {
   .problem-icon {
     font-size: 40px;
     color: $primary-color;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     display: block;
+    text-align: center;
   }
-  h3 { font-size: 20px; margin-bottom: 16px; font-weight: 700; }
+  h3 { font-size: 20px; margin-bottom: 16px; font-weight: 700; text-align: center; }
   ul {
     padding-left: 20px;
     color: $text-sub;
@@ -242,14 +268,25 @@ header {
 
   .case-img {
     width: 100%;
-    height: 180px;
-    background-color: #eef2f6;
+    height: 160px;
+    background-color: #f1f5f9;
+    
+    // ▼ 修正: フレックスボックスで横並び・中央寄せ・隙間を指定
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #bdc3c7;
-    font-weight: 700;
-    font-size: 24px;
+    gap: 24px; // アイコン同士の間隔
+    
+    // ▼ アイコンが浮き出るようなドロップシャドウ
+    .case-icon-wrapper {
+      display: flex; // SVGのベースラインずれ防止
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+      transition: transform 0.2s;
+      
+      &:hover {
+        transform: scale(1.1); // ホバー時に少し拡大
+      }
+    }
   }
 
   .case-content {
@@ -261,26 +298,47 @@ header {
     .case-title {
       font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       line-height: 1.4;
     }
 
-    .case-tags {
+    // ▼ タグエリアの修正
+    .case-tags-wrapper {
       margin-bottom: 20px;
       display: flex;
+      flex-direction: column; // 2行に分ける
+      gap: 8px; // 行間
+    }
+
+    .tag-group {
+      display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      .tag {
-        font-size: 11px;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px; // 丸みを少し抑えてカチッとさせる
+      font-weight: 700;
+      
+      // ▼ 技術タグ (Tech): 既存のグリーン系
+      &.tag-tech {
         background: rgba($primary-color, 0.1);
         color: darken($primary-color, 20%);
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-weight: 700;
+        border: 1px solid rgba($primary-color, 0.2);
+      }
+
+      // ▼ 機能タグ (Feature): オレンジ系でアクセント
+      &.tag-feature {
+        background: #fff7ed; // 薄いオレンジ
+        color: #c2410c;      // 濃いオレンジ
+        border: 1px solid #ffedd5;
       }
     }
 
     .case-footer {
+      // ... (既存のまま)
       margin-top: auto;
       border-top: 1px solid #f0f0f0;
       padding-top: 16px;
@@ -297,17 +355,29 @@ header {
 .tech-logos {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 30px; // 間隔調整
   flex-wrap: wrap;
   align-items: center;
-  opacity: 0.6;
+  // opacity: 0.6; ← ロゴの色をはっきりさせるため削除
+
   .tech-item {
-    font-size: 20px;
+    // 枠線を消して、縦並び（アイコン＋文字）のレイアウトに変更
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px; // 文字サイズ調整
     font-weight: 700;
     color: #555;
-    padding: 10px 20px;
-    border: 2px solid #eee;
-    border-radius: 4px;
+    padding: 10px;
+    border: none; // 枠線削除
+    border-radius: 0;
+    
+    // ホバー時に少し浮くアニメーション
+    transition: transform 0.2s;
+    &:hover {
+      transform: translateY(-5px);
+    }
   }
 }
 
@@ -335,4 +405,127 @@ footer {
   }
   
   .copyright { text-align: center; color: #555; font-size: 12px; }
+}
+
+// app/globals.scss
+
+// ... (既存のコードはそのまま) ...
+
+// ▼▼▼ 以下を追加・修正してください ▼▼▼
+
+// 1. 注釈テキスト（トップページで追加されたクラス）
+.notice {
+  font-size: 13px;
+  color: $text-sub;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+// 2. 下層ページ用：チェックリスト（サービスページなどで使用）
+.check-list {
+  margin-top: 24px;
+  li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    
+    &::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: $primary-color;
+      font-weight: 900;
+    }
+  }
+}
+
+// 3. 下層ページ用：フローリスト（業務システムページなどで使用）
+.flow-list {
+  counter-reset: flow-counter;
+  
+  li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 24px;
+    
+    &::before {
+      counter-increment: flow-counter;
+      content: counter(flow-counter);
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 28px;
+      height: 28px;
+      background: $primary-color;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    p { font-size: 15px; color: $text-sub; }
+  }
+}
+
+// 4. 下層ページ用：会社概要の定義リスト
+.company-info {
+  border-top: 1px solid $border-color;
+  
+  .info-row {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    padding: 20px 0;
+    
+    dt {
+      width: 180px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    dd {
+      margin: 0;
+      flex-grow: 1;
+    }
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      dt { margin-bottom: 8px; }
+    }
+  }
+}
+
+// 5. お問い合わせフォーム
+.form-group {
+  margin-bottom: 24px;
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.2);
+    }
+  }
+  
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
 }

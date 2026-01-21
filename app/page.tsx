@@ -1,6 +1,43 @@
 // app/page.tsx
 import Link from "next/link";
-import { casesData } from "@/data/cases"; // データファイルをインポート
+import { casesData } from "@/data/cases";
+
+// ▼ 1. アイコンとロゴのインポート
+import { FaLaptopCode, FaCalculator, FaRocket, FaServer } from "react-icons/fa"; // FontAwesome (Solid)
+import {
+  SiRubyonrails,
+  SiNextdotjs,
+  SiNuxtdotjs,
+  SiLaravel,
+  SiPrisma,
+  SiMysql,
+  SiPostgresql,
+  SiAmazonwebservices,
+  SiVercel,
+  SiDocker,
+  SiTerraform,
+} from "react-icons/si"; // Simple Icons (公式ブランドロゴ)
+
+const getTechIcon = (iconName: string, size: number = 48) => {
+  switch (iconName) {
+    case "Rails":
+      return (
+        <SiRubyonrails size={size} color="#CC0000" title="Ruby on Rails" />
+      );
+    case "Nuxt":
+      return <SiNuxtdotjs size={size} color="#00DC82" title="Nuxt.js" />;
+    case "Next":
+      return <SiNextdotjs size={size} color="#000000" title="Next.js" />;
+    case "AWS":
+      return <SiAmazonwebservices size={size} color="#FF9900" title="AWS" />;
+    case "Laravel":
+      return <SiLaravel size={size} color="#FF2D20" title="Laravel" />;
+    case "Vercel":
+      return <SiVercel size={size} color="#4285F4" title="Vercel" />;
+    default:
+      return null;
+  }
+};
 
 export default function Home() {
   return (
@@ -10,21 +47,19 @@ export default function Home() {
         <div className="container">
           <div className="hero-content">
             <h1>
-              スピードと技術で、
+              あなたのイメージを
               <br />
-              あなたのビジョンを
-              <br />
-              <span className="highlight-marker">最短距離で実現</span>
+              <span className="highlight-marker">最短距離で形にして検証へ</span>
             </h1>
             <p>
-              新規サービス開発と社内業務システム構築に強みを持つ開発会社。
+              小中規模のサービス立ち上げと社内業務システムの受託開発実績多数
               <br />
-              豊富な経験と蓄積したコード資産、そしてAIの圧倒的な生産性で、
+              豊富な単独構築、運用経験から得たノウハウに生成AIの生産性を組み合わせ
               <br />
-              他社にはないスピードと品質を提供します。
+              サービスやシステム導入の成功を全力でサポートします
             </p>
             <Link href="/contact" className="btn btn-primary">
-              まずは相談する ＞
+              まずは相談する 　＞
             </Link>
           </div>
         </div>
@@ -36,12 +71,15 @@ export default function Home() {
           <div className="section-header">
             <h2 className="section-title">こんなお悩み、ありませんか？</h2>
             <p className="section-desc">
-              技術的な不安や、開発スピードの課題を解決します
+              発注ノウハウの不足、費用やスケジュールの不安に寄り添います
             </p>
           </div>
           <div className="problems-grid">
             <div className="problem-card">
-              <span className="problem-icon">📝</span>
+              {/* ▼ 2. ソリッドなアイコンに変更 */}
+              <span className="problem-icon">
+                <FaLaptopCode />
+              </span>
               <h3>
                 システム発注の
                 <br />
@@ -49,13 +87,17 @@ export default function Home() {
               </h3>
               <ul>
                 <li>
-                  <span className="fw-bold">システム開発未経験でもOK</span>
+                  <span className="fw-bold">システム発注未経験の事例多数</span>
                 </li>
-                <li>最小限の指示でベストプラクティスを提案</li>
+                <li>
+                  仕様が曖昧でもベストプラクティスから選択肢を提案しながら進めます
+                </li>
               </ul>
             </div>
             <div className="problem-card">
-              <span className="problem-icon">📊</span>
+              <span className="problem-icon">
+                <FaCalculator />
+              </span>
               <h3>
                 見積もりの
                 <br />
@@ -63,42 +105,53 @@ export default function Home() {
               </h3>
               <ul>
                 <li>
-                  <span className="fw-bold">全て機能ベースで見積もり</span>
+                  <span className="fw-bold">
+                    全て機能や要素ベースで見積もり
+                  </span>
                 </li>
-                <li>簡易設計から即時に工数を算出</li>
+                <li>
+                  簡易設計から工数とスケジュールを算出。見積もりを見て取捨選択を
+                </li>
               </ul>
             </div>
             <div className="problem-card">
-              <span className="problem-icon">🚀</span>
+              <span className="problem-icon">
+                <FaRocket />
+              </span>
               <h3>
-                とにかく
+                納期が近く
                 <br />
-                急ぎで作りたい
+                引き受けてもらえない
               </h3>
               <ul>
                 <li>
-                  <span className="fw-bold">蓄積コードとAI活用で爆速開発</span>
+                  <span className="fw-bold">経験とAI活用で爆速開発</span>
                 </li>
-                <li>多分野の技術ノウハウでリードタイム最小化</li>
+                <li>
+                  多分野のサービス開発のノウハウと技術力でリードタイムを最小化します
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section (変更なし) */}
       <section className="section">
         <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Fitseekの開発</h2>
+          </div>
           <div className="stats-grid">
             <div className="stat-item">
               <span className="stat-number">
-                24<span className="stat-unit"></span>
+                20<span className="stat-unit">サービス</span>
               </span>
               <span className="stat-label">単独開発実績</span>
             </div>
             <div className="stat-item">
               <span className="stat-number">
-                3<span className="stat-unit">ヶ月</span>
+                2.5<span className="stat-unit">ヶ月</span>
               </span>
               <span className="stat-label">平均初期開発期間</span>
             </div>
@@ -109,37 +162,64 @@ export default function Home() {
               <span className="stat-label">平均初期開発費用</span>
             </div>
           </div>
+          <div className="notice" style={{ marginTop: "80px" }}>
+            ※単独開発とは要件定義、設計、開発、インフラ構築を全て自社で行ったプロジェクトです（デザインは社外にご協力いただいております）
+          </div>
+          <div className="notice">
+            ※直近5年間の単独で新規開発した案件の平均値です。また期間、費用は初期Ver納品までの数値でその後の改修や運用保守は含みません
+          </div>
         </div>
       </section>
 
-      {/* Cases Section (Dynamic Loop) */}
+      {/* Cases Section (Updated) */}
       <section className="section bg-gray">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">開発事例</h2>
             <p className="section-desc">
-              低コスト・短納期での開発実績が豊富にあります
+              事例は全て実際に弊社で開発した案件の数字となります
+            </p>
+            <p className="notice">
+              開示や詳細については個別相談時に守秘義務の範囲内でご説明可能です
             </p>
           </div>
 
           <div className="cases-grid">
             {casesData.map((item) => (
               <div key={item.id} className="case-card">
-                {/* 将来的には <img src={item.imageUrl} /> に変更 */}
-                <div className="case-img">{item.imageLabel}</div>
-
+                {/* ▼ 画像エリア：メインアイコンを表示 */}
+                <div className="case-img">
+                  {item.mainIcons.map((iconKey, index) => (
+                    // 複数ある場合は少し小さめ(42px)、1つなら大きめ(56px)にする等の調整も可能
+                    // ここでは一律サイズでキーを付与して表示
+                    <div key={index} className="case-icon-wrapper">
+                      {getTechIcon(iconKey, 48)}
+                    </div>
+                  ))}
+                </div>
                 <div className="case-content">
-                  <div className="case-title">
-                    {/* 改行対応が必要な場合はCSSで調整するか、 dangerouslySetInnerHTML 等を検討 */}
-                    {item.title}
+                  <div className="case-title">{item.title}</div>
+
+                  {/* ▼ タグエリア：技術と機能を分けて表示 */}
+                  <div className="case-tags-wrapper">
+                    {/* 技術タグ (Tech) */}
+                    <div className="tag-group">
+                      {item.techTags.map((tag, index) => (
+                        <span key={`tech-${index}`} className="tag tag-tech">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {/* 機能タグ (Feature) */}
+                    <div className="tag-group">
+                      {item.featureTags.map((tag, index) => (
+                        <span key={`feat-${index}`} className="tag tag-feature">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="case-tags">
-                    {item.tags.map((tag, index) => (
-                      <span key={index} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+
                   <div className="case-footer">
                     <div>
                       費用: <span className="case-val">{item.price}</span>
@@ -158,18 +238,59 @@ export default function Home() {
       {/* Tech Stack */}
       <section className="section">
         <div className="container text-center">
-          <h2
-            className="section-title"
-            style={{ marginBottom: "40px", fontSize: "24px" }}
-          >
-            Technology Stack
-          </h2>
+          <div className="section-header">
+            <h2 className="section-title">主要技術スタック</h2>
+            <p className="section-desc">
+              案件の規模や要件、既存システムや開発メンバーのスキルセットに応じ最適な技術を選定します
+            </p>
+          </div>
+          {/* ▼ 3. ロゴアイコンの配置 */}
           <div className="tech-logos">
-            <div className="tech-item">Ruby on Rails</div>
-            <div className="tech-item">Next.js</div>
-            <div className="tech-item">MySQL</div>
-            <div className="tech-item">PostgreSQL</div>
-            <div className="tech-item">AWS</div>
+            <div className="tech-item">
+              <SiRubyonrails size={40} color="#CC0000" />
+              <span>Rails</span>
+            </div>
+            <div className="tech-item">
+              <SiNextdotjs size={40} />
+              <span>Next.js</span>
+            </div>
+            <div className="tech-item">
+              <SiNuxtdotjs size={40} color="#00DC82" />
+              <span>Nuxt.js</span>
+            </div>
+            <div className="tech-item">
+              <SiPrisma size={40} color="#2D3748" />
+              <span>Prisma</span>
+            </div>
+            <div className="tech-item">
+              <SiMysql size={40} color="#4479A1" />
+              <span>MySQL</span>
+            </div>
+            <div className="tech-item">
+              <SiPostgresql size={40} color="#4169E1" />
+              <span>PostgreSQL</span>
+            </div>
+            <div className="tech-item">
+              <SiAmazonwebservices size={40} color="#FF9900" />
+              <span>AWS</span>
+            </div>
+            <div className="tech-item">
+              <SiVercel size={40} />
+              <span>Vercel</span>
+            </div>
+            <div className="tech-item">
+              <FaServer size={40} color="#555" />
+              <span>Sakura Cloud</span>
+            </div>{" "}
+            {/* さくらは汎用アイコンで代用 */}
+            <div className="tech-item">
+              <SiDocker size={40} color="#2496ED" />
+              <span>Docker</span>
+            </div>
+            <div className="tech-item">
+              <SiTerraform size={40} color="#7B42BC" />
+              <span>Terraform</span>
+            </div>
           </div>
         </div>
       </section>

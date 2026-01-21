@@ -14,12 +14,15 @@ export default function Footer() {
           </Link>
         </div>
         <div className="footer-links">
-          <Link href="/service">サービス立ち上げ</Link>
-          <Link href="/system">社内業務システム</Link>
+          {/* <Link href="/service">サービス立ち上げ</Link>
+          <Link href="/system">社内業務システム</Link> */}
+          <Link href="/">TOP</Link>
           <Link href="/about">会社概要</Link>
-          <Link href="#">プライバシーポリシー</Link>
+          {/* <Link href="#">プライバシーポリシー</Link> */}
         </div>
-        <div className="copyright">&copy; Fitseek Inc. All Rights Reserved.</div>
+        <div className="copyright">
+          &copy; Fitseek Inc. All Rights Reserved.
+        </div>
       </div>
     </footer>
   );
