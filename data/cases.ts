@@ -58,7 +58,7 @@ export const casesData: CaseItem[] = [
   {
     id: 4,
     title: "廃棄物処理業者検索サイト",
-    techTags: ["Rails", "Sakura Cloud"],
+    techTags: ["Rails", "MySQL", "Sakura Cloud"],
     featureTags: [
       "位置情報検索",
       "ランキングアルゴリズム",
@@ -75,7 +75,7 @@ export const casesData: CaseItem[] = [
     title: "カスタマイズ時計EC",
     techTags: ["Laravel", "MySQL"],
     featureTags: ["Webカスタマイズ", "ECカート", "注文管理", "決済"],
-    price: "120万円",
+    price: "160万円",
     period: "2ヶ月",
     mainIcons: ["Laravel"],
   },

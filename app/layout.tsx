@@ -12,7 +12,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata = {
   title: "株式会社フィットシーク | Fitseek Inc.",
-  description: "新規サービス開発と社内業務システム構築に強みを持つ開発会社。",
+  description: "新規サービス開発と社内業務システム構築に強みを持つシステム受託開発会社。",
 };
 
 export default function RootLayout({
