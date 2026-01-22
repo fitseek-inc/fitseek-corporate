@@ -23,7 +23,10 @@ export default function Header() {
           <Link href="/system" className="nav-link">
             社内業務システム
           </Link> */}
-          <Link href="/about" className="nav-link">
+          <Link href="/message" className="nav-link">
+            代表挨拶
+          </Link>
+          <Link href="/company" className="nav-link">
             会社概要
           </Link>
           <Link href="/contact" className="btn btn-primary header-cta">

@@ -17,7 +17,13 @@ export default function Footer() {
           {/* <Link href="/service">サービス立ち上げ</Link>
           <Link href="/system">社内業務システム</Link> */}
           <Link href="/">TOP</Link>
-          <Link href="/about">会社概要</Link>
+          <Link href="/message">
+            代表挨拶
+          </Link>
+          <Link href="/company">
+            会社概要
+          </Link>
+
           {/* <Link href="#">プライバシーポリシー</Link> */}
         </div>
         <div className="copyright">
