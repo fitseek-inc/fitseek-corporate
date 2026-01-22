@@ -40,7 +40,6 @@ export default function ContactPage() {
         <div className="container">
           <div className="contact-wrapper">
             <div className="contact-card">
-              {/* 案内文 */}
               <div className="contact-intro">
                 <p>
                   以下のフォームにご記入の上、送信ボタンを押してください。
@@ -49,18 +48,22 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* フォーム */}
+              {/* ▼ 修正ポイント:
+                1. data-netlify="true" や netlify-honeypot 属性を削除
+                   (public/forms.html 側で定義済みのためReact側では不要)
+                2. name="contact" は維持
+                3. action="/contact/success" は維持
+              */}
               <form
                 className="contact-form"
                 name="contact"
                 method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
                 action="/contact/success"
               >
+                {/* 必須: Netlifyにフォーム名を伝える隠しフィールド */}
                 <input type="hidden" name="form-name" value="contact" />
 
-                {/* ボット捕獲用の隠しフィールド */}
+                {/* ハニーポット用隠しフィールド（React側ではシンプルに配置） */}
                 <p style={{ display: "none" }}>
                   <label>
                     Don’t fill this out if you’re human:{" "}
