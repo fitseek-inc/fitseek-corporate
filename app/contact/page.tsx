@@ -33,14 +33,13 @@ export default function ContactPage() {
 
     try {
       // Netlifyに対して直接POST送信を行う
-      const response = await fetch("/", {
+      const response = await fetch("/forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        // FormDataをURLエンコードされた文字列に変換して送信
         body: new URLSearchParams(formData as any).toString(),
       });
 
-      if (response.ok) {
+if (response.ok) {
         // 成功したら完了ページへ遷移
         router.push("/contact/success");
       } else {
@@ -74,16 +73,16 @@ export default function ContactPage() {
           <div className="contact-wrapper">
             <div className="contact-card">
               <div className="contact-intro">
-                <p>
-                  以下のフォームにご記入の上、送信ボタンを押してください。
-                </p>
+                <p>以下のフォームにご記入の上、送信ボタンを押してください。</p>
               </div>
 
               <form
                 className="contact-form"
                 name="contact"
-                onSubmit={handleSubmit} // ▼ actionではなくonSubmitを使用
-                // methodやactionは削除してOKですが、念のため残しても害はありません
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
               >
                 {/* 必須: Netlifyにフォーム名を伝える隠しフィールド */}
                 <input type="hidden" name="form-name" value="contact" />
