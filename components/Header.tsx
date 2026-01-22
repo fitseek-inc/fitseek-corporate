@@ -68,13 +68,13 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/company" onClick={toggleMenu}>
-                  会社概要
+                <Link href="/message" onClick={toggleMenu}>
+                  代表挨拶
                 </Link>
               </li>
               <li>
-                <Link href="/message" onClick={toggleMenu}>
-                  代表挨拶
+                <Link href="/company" onClick={toggleMenu}>
+                  会社概要
                 </Link>
               </li>
               <li style={{ marginTop: "24px" }}>
