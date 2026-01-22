@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // フォントの設定
 const notoSansJP = Noto_Sans_JP({
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <GoogleAnalytics gaId="G-C3KX8KPGEW" />
       </body>
     </html>
   );

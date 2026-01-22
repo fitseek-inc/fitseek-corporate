@@ -1,4 +1,22 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function ContactPage() {
+  const startedRef = useRef(false);
+
+  // contact_view：ページ表示
+  useEffect(() => {
+    window.gtag?.("event", "contact_view");
+  }, []);
+
+  // contact_start：最初の入力開始（1回だけ）
+  const markStartedOnce = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    window.gtag?.("event", "contact_start");
+  };
+
   return (
     <section className="section">
       <div className="container" style={{ maxWidth: "700px" }}>
@@ -6,19 +24,15 @@ export default function ContactPage() {
           <h2 className="section-title">お問い合わせ</h2>
           <p className="section-desc">
             開発のご相談、お見積もり依頼など、お気軽にお問い合わせください。
-            <br />
-            通常、1営業日以内に返信いたします。
           </p>
         </div>
 
-        {/* Netlify Forms対応 */}
         <form
           name="contact"
           method="POST"
           data-netlify="true"
-          action="/contact/success" /* 送信完了後のリダイレクト先（必要であれば作成） */
+          action="/contact/success"
         >
-          {/* Netlify Formsに必要な隠しフィールド */}
           <input type="hidden" name="form-name" value="contact" />
 
           <div className="form-group">
@@ -28,6 +42,8 @@ export default function ContactPage() {
               id="company"
               name="company"
               placeholder="株式会社フィットシーク"
+              onFocus={markStartedOnce}
+              onInput={markStartedOnce}
             />
           </div>
 
@@ -41,6 +57,8 @@ export default function ContactPage() {
               name="name"
               required
               placeholder="山田 太郎"
+              onFocus={markStartedOnce}
+              onInput={markStartedOnce}
             />
           </div>
 
@@ -54,6 +72,8 @@ export default function ContactPage() {
               name="email"
               required
               placeholder="info@example.com"
+              onFocus={markStartedOnce}
+              onInput={markStartedOnce}
             />
           </div>
 
@@ -66,7 +86,9 @@ export default function ContactPage() {
               name="message"
               required
               placeholder="システムの開発について相談したいのですが..."
-            ></textarea>
+              onFocus={markStartedOnce}
+              onInput={markStartedOnce}
+            />
           </div>
 
           <div style={{ textAlign: "center", marginTop: "40px" }}>
