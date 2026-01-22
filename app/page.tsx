@@ -1,6 +1,7 @@
 // app/page.tsx
 import Link from "next/link";
 import { casesData } from "@/data/cases";
+import CtaLink from "@/components/CtaLink";
 
 // ▼ 1. アイコンとロゴのインポート
 import { FaLaptopCode, FaCalculator, FaRocket, FaServer } from "react-icons/fa"; // FontAwesome (Solid)
@@ -58,9 +59,9 @@ export default function Home() {
               <br />
               サービスやシステム導入の成功を全力でサポートします
             </p>
-            <Link href="/contact" className="btn btn-primary">
+            <CtaLink location="hero" className="btn btn-primary">
               まずは相談する 　＞
-            </Link>
+            </CtaLink>
           </div>
         </div>
       </section>
