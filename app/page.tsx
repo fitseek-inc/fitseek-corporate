@@ -53,11 +53,11 @@ export default function Home() {
               <span className="highlight-marker">最短距離で形にして検証へ</span>
             </h1>
             <p>
-              小中規模のサービス立ち上げと社内業務システムの受託開発実績多数
+              小中規模のサービス立ち上げと社内業務システムの受託開発実績が多数
               <br />
               豊富な単独構築、運用経験から得たノウハウに生成AIの生産性を組み合わせ
               <br />
-              サービスやシステム導入の成功を全力でサポートします
+              サービスやシステム導入の成功を全力でサポート
             </p>
             <CtaLink location="hero" className="btn btn-primary">
               まずは相談する 　＞
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="section-header">
             <h2 className="section-title">こんなお悩み、ありませんか？</h2>
             <p className="section-desc">
-              発注ノウハウの不足、費用やスケジュールの不安に寄り添います
+              発注ノウハウ、費用やスケジュールの不安に寄り添います
             </p>
           </div>
           <div className="problems-grid">
@@ -163,7 +163,7 @@ export default function Home() {
               <span className="stat-label">平均初期開発費用</span>
             </div>
           </div>
-          <div className="notice" style={{ marginTop: "80px" }}>
+          <div className="notice">
             ※単独開発とは要件定義、設計、開発、インフラ構築を全て自社で行ったプロジェクトです（デザインを除く）
           </div>
           <div className="notice">
@@ -179,9 +179,6 @@ export default function Home() {
             <h2 className="section-title">開発事例</h2>
             <p className="section-desc">
               事例は全て実際に弊社で開発した案件の数字となります
-            </p>
-            <p className="notice">
-              個別相談時には詳細や実際のサイトを守秘義務の範囲内でご案内可能です
             </p>
           </div>
 

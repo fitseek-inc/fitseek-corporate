@@ -2,11 +2,11 @@
 export default function CompanyPage() {
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-sub">
         <div className="container">
           <div className="hero-content">
             <h1>会社概要</h1>
-            <p>株式会社フィットシークの基本情報とアクセスについて</p>
+            <p>株式会社フィットシークの基本情報とアクセス</p>
           </div>
         </div>
       </section>
@@ -16,7 +16,6 @@ export default function CompanyPage() {
           {/* 会社情報テーブル */}
           <div
             className="company-info"
-            style={{ maxWidth: "800px", margin: "0 auto 80px" }} // 下にマージンを追加
           >
             <div className="info-row">
               <dt>企業名</dt>

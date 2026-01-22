@@ -294,6 +294,10 @@ header {
   // ▼ 修正: スマホ時のヒーローエリアを大幅にコンパクト化
   @media (max-width: 768px) {
     padding: 80px 0 100px; // 上下余白を短縮
+
+    .container {
+      padding: 0 24px;
+    }
     
     &-content {
       h1 { 
@@ -306,6 +310,36 @@ header {
         line-height: 1.8;
       }
       // ボタンのマージンなども詰めるならここで調整
+    }
+  }
+  &.hero-sub {
+    // PCでも少し高さを抑えたい場合（任意）
+    padding: 120px 0 140px;
+
+    // コンテンツ幅の調整（任意）
+    .hero-content {
+      max-width: 800px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    // スマホ対応の上書き
+    @media (max-width: 768px) {
+      // トップページ(80px 0 100px)よりもコンパクトにする
+      padding: 60px 0 80px; 
+      
+      .hero-content {
+        h1 {
+          font-size: 24px; // トップ(28px)より少し小さく
+          margin-bottom: 16px;
+        }
+        p {
+          font-size: 13px; // トップ(14px)より少し小さく
+          margin-bottom: 0; // 説明文の下余白をなくす
+        }
+      }
     }
   }
 }
@@ -344,7 +378,7 @@ header {
 
   // ▼ 修正: カード内部の余白を圧縮
   @media (max-width: 768px) {
-    padding: 24px 20px;
+    padding: 16px 20px;
   }
 
   .problem-icon {
@@ -353,6 +387,10 @@ header {
     margin-bottom: 16px;
     display: block;
     text-align: center;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0;
+    }
   }
   h3 { font-size: 20px; margin-bottom: 16px; font-weight: 700; text-align: center; }
   ul {
@@ -369,10 +407,12 @@ header {
   justify-content: center;
   gap: 80px;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 
   // ▼ 修正: スマホ時の間隔を詰める
   @media (max-width: 768px) {
     gap: 32px;
+    margin-bottom: 40px;
   }
 
   .stat-item {
@@ -649,7 +689,14 @@ footer {
 }
 
 .company-info {
+  max-width: 800px;
+  margin: 0 auto 80px;
   border-top: 1px solid $border-color;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    margin-bottom: 40px;
+  }
   
   .info-row {
     display: flex;
@@ -670,6 +717,161 @@ footer {
       flex-direction: column;
       dt { margin-bottom: 8px; }
       padding: 16px 0; // 行間を少し詰める
+    }
+  }
+}
+
+// ▼▼▼ Message Page Styles (代表挨拶ページ) ▼▼▼
+.message-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 80px 60px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  // スマホ対応: 余白を大幅に縮小
+  @media (max-width: 768px) {
+    padding: 40px 24px;
+    margin: 0 0 20px; // 下マージン調整
+  }
+}
+
+.message-header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+
+  .sub-title {
+    font-size: 15px;
+    color: $primary-color;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .role {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .name {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: serif; // 明朝体など
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+}
+
+.message-section {
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+
+  // セクション見出し (経歴・ご挨拶)
+  .section-head {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
+      font-size: 18px;
+    }
+
+    .bar {
+      width: 6px;
+      height: 24px;
+      background: $primary-color;
+      display: block;
+    }
+  }
+
+  // 経歴リスト
+  .career-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+
+      @media (max-width: 768px) {
+        margin-bottom: 16px;
+      }
+
+      .bullet {
+        color: $primary-color;
+        margin-right: 12px;
+        margin-top: 5px;
+        font-size: 12px;
+        flex-shrink: 0; // 記号が潰れないように
+      }
+
+      .text {
+        line-height: 1.8;
+        font-size: 16px;
+
+        @media (max-width: 768px) {
+          font-size: 14px;
+          line-height: 1.7;
+        }
+      }
+    }
+  }
+
+  // 本文
+  .lead-text {
+    line-height: 1.8;
+    color: $text-main;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    font-family: serif;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .body-text {
+    line-height: 2.0;
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+  }
+
+  .sign {
+    margin-top: 40px;
+    text-align: right;
+    font-size: 18px;
+    font-family: serif;
+    
+    @media (max-width: 768px) {
+      margin-top: 30px;
+      font-size: 16px;
     }
   }
 }
@@ -705,5 +907,70 @@ footer {
   textarea {
     min-height: 150px;
     resize: vertical;
+  }
+}
+
+// ▼▼▼ Contact Page Styles (お問い合わせページ) ▼▼▼
+
+.contact-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: #fff;
+  padding: 60px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  // スマホ対応: 余白を縮小
+  @media (max-width: 768px) {
+    padding: 40px 24px;
+  }
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #666;
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: left; // スマホでは左寄せの方が読みやすい場合が多い（任意）
+  }
+}
+
+.contact-form {
+  // textareaの高さをここで指定
+  textarea {
+    min-height: 200px;
+  }
+
+  // 必須マークの色
+  .required-mark {
+    color: $primary-color;
+  }
+
+  // 送信ボタンエリア
+  .submit-area {
+    text-align: center;
+    margin-top: 50px;
+
+    @media (max-width: 768px) {
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-width: 240px;
+
+      // スマホではボタンを全幅にして押しやすく
+      @media (max-width: 768px) {
+        width: 100%;
+        min-width: auto;
+      }
+    }
   }
 }

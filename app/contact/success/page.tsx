@@ -10,7 +10,7 @@ export default function ContactSuccessPage() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-sub">
         <div className="container">
           <div className="hero-content">
             <h1>送信完了</h1>
