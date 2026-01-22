@@ -1,0 +1,5 @@
+# corporate subdomain -> apex（パス維持）
+https://corporate.fitseek.jp/*  https://fitseek.jp/:splat  301!
+
+# netlify domain -> apex(パス維持)
+https://fitseek-corporate.netlify.app/*  https://fitseek.jp/:splat  301!
