@@ -57,7 +57,7 @@ export default function Home() {
               <br />
               豊富な単独構築、運用経験から得たノウハウに生成AIの生産性を組み合わせ
               <br />
-              サービスやシステム導入の成功を全力でサポート
+              サービスやシステム導入の成功を全力でサポートします
             </p>
             <CtaLink location="hero" className="btn btn-primary">
               まずは相談する 　＞
